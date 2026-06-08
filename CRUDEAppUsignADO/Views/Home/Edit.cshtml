@@ -1,0 +1,215 @@
+@* @model CRUDEAppUsignADO.Models.Employees
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Employees</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Designation" class="control-label"></label>
+                <input asp-for="Designation" class="form-control" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} *@
+
+@model CRUDEAppUsignADO.Models.Employees
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg,#f7971e,#ffd200);
+        min-height: 100vh;
+    }
+
+    .edit-card {
+        max-width: 850px;
+        margin: 40px auto;
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0,0,0,.15);
+    }
+
+    .edit-header {
+        background: linear-gradient(90deg,#ff9800,#ff5722);
+        color: white;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 10px;
+        padding: 12px;
+    }
+
+        .form-control:focus {
+            border-color: #ff9800;
+            box-shadow: 0 0 10px rgba(255,152,0,.3);
+        }
+
+    .info-box {
+        background: #fff8e1;
+        border-left: 5px solid #ff9800;
+        padding: 12px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-update {
+        background: linear-gradient(90deg,#ff9800,#ff5722);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+
+        .btn-update:hover {
+            color: white;
+        }
+</style>
+
+<div class="container">
+
+    <div class="card edit-card">
+
+        <div class="edit-header">
+            <h2>✏️ Edit Employee</h2>
+            <p class="mb-0">
+                Update Employee Information
+            </p>
+        </div>
+
+        <div class="card-body p-4">
+
+            <div class="info-box">
+                <strong>Editing Employee :</strong>
+                @Model.Name
+            </div>
+
+            <form asp-action="Edit">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+
+                        <select asp-for="Gender" class="form-select">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                        <span asp-validation-for="Gender"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Age" class="form-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Designation"
+                               class="form-label"></label>
+                        <input asp-for="Designation"
+                               class="form-control" />
+                        <span asp-validation-for="Designation"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label asp-for="City" class="form-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City"
+                              class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <button type="submit"
+                            class="btn btn-update me-2">
+                        💾 Update Employee
+                    </button>
+
+                    <a asp-action="Index"
+                       class="btn btn-secondary">
+                        ← Back
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
